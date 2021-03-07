@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.arunsiddharth.AppTest" time="0.013" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.arunsiddharth.AppTest" time="0.02" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="15"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-15.0.1.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/arunsiddharth/Documents/Workspace/Whisper/InterviewBit/target/surefire/surefirebooter7545417667189692711.jar /Users/arunsiddharth/Documents/Workspace/Whisper/InterviewBit/target/surefire 2020-12-29T10-27-13_084-jvmRun1 surefire9077011266641900675tmp surefire_012880521853533505724tmp"/>
+    <property name="sun.java.command" value="/Users/arunsiddharth/Documents/Workspace/Whisper/InterviewBit/target/surefire/surefirebooter5825689692242095951.jar /Users/arunsiddharth/Documents/Workspace/Whisper/InterviewBit/target/surefire 2021-03-07T13-54-26_009-jvmRun1 surefire8560343914180192047tmp surefire_010454903506004106444tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/arunsiddharth/Documents/Workspace/Whisper/InterviewBit/target/test-classes:/Users/arunsiddharth/Documents/Workspace/Whisper/InterviewBit/target/classes:/Users/arunsiddharth/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar:"/>
@@ -28,7 +28,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/Users/arunsiddharth/Documents/Workspace/Whisper/InterviewBit/target/surefire/surefirebooter7545417667189692711.jar"/>
+    <property name="surefire.real.class.path" value="/Users/arunsiddharth/Documents/Workspace/Whisper/InterviewBit/target/surefire/surefirebooter5825689692242095951.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="15.0.1+9-18"/>
@@ -53,5 +53,5 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="59.0"/>
   </properties>
-  <testcase name="testApp" classname="org.arunsiddharth.AppTest" time="0.004"/>
+  <testcase name="testApp" classname="org.arunsiddharth.AppTest" time="0.006"/>
 </testsuite>

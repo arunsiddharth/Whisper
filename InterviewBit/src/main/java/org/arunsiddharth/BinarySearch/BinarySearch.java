@@ -1,4 +1,4 @@
-package org.arunsiddharth.Arrays;
+package org.arunsiddharth.BinarySearch;
 
 public class BinarySearch {
     
@@ -224,7 +224,7 @@ public class BinarySearch {
     public static void main(String[] args){
         Integer[] array = {22,33,36,44,49,90,91};
         //System.out.println(upperBound(array, 2));
-        Integer[] circularArray = {1,2,3,4,5};
+        //Integer[] circularArray = {1,2,3,4,5};
         System.out.println(floor(array, 21));
     }
 }

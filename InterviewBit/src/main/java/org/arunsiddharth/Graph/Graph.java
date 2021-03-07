@@ -1,95 +1,10 @@
-package org.arunsiddharth.Arrays;
+package org.arunsiddharth.Graph;
 
 import java.util.*;
+import org.arunsiddharth.Domain.Edge;
+import org.arunsiddharth.Advanced.DisjointSetUnion;
 
-
-class Edge implements Comparable<Edge>{
-    int source;
-    int dest;
-    int weight;
-    int id;
-
-    static Edge of(int s, int d, int w){
-        Edge e = new Edge();
-        e.source = s;
-        e.dest = d;
-        e.weight = w;
-        e.id = 0;
-        return e;
-    }
-
-    public int compareTo(Edge e){
-        return this.weight-e.weight;
-    }
-
-    public int hashCode(){
-        return this.weight*31+this.dest;
-    }
-
-    public boolean equals(Object ob){
-        Edge e = (Edge)ob;
-        if(this==e)return true;
-        return this.weight==e.weight && this.source==e.source && this.dest==e.dest;
-    }
-
-    public String toString(){
-        return "["+this.source+" -> "+this.dest+" : "+ this.weight+"]";
-    }
-
-}
-
-
-class DisjointSetUnion {
-    int[] parent;
-    int[] rank;
-    int disconnectedComponents;
-
-    DisjointSetUnion(int size){
-        parent = new int[size];
-        rank = new int[size];
-        disconnectedComponents=size;
-        for(int i=0;i<size;i++)parent[i]=i;
-        Arrays.fill(rank, 1);
-    }
-
-    int find(int node){
-        return parent[node]==node?node:(parent[node]=find(parent[node]));
-    }
-
-    void unionByRank(int node1, int node2){
-        int p1 = find(node1);
-        int p2 = find(node2);
-        if(p1==p2)return;
-        if(rank[p1]>=rank[p2]){
-            parent[p2]=p1;
-            rank[p1]+=rank[p2];
-        }else{
-            parent[p1]=p2;
-            rank[p2]+=rank[p1];
-        }
-        disconnectedComponents--;
-    }
-
-    void union(int node1, int node2){
-        int p1 = find(node1);
-        int p2 = find(node2);
-        if(p1==p2)return;
-        parent[p2]=p1;
-        rank[p1]+=rank[p2];
-        disconnectedComponents--;
-    }
-
-    boolean isInSameSet(int node1, int node2){
-        return find(node1)==find(node2);
-    }
-
-    boolean isConnected(){
-        return (disconnectedComponents==1);
-    }
-
-}
-
-class Graph {
+public class Graph {
     ArrayList<ArrayList<Edge>> adjList;
     int[][] adjMat;
     ArrayList<Edge> edgeList;
@@ -512,57 +427,4 @@ class Graph {
         }
     }
 
-}
-
-
-public class GraphPractice {
-    public static void main(String[] args){
-        Graph graph = new Graph(5);
-        graph.addDirectedEdge(0, 1, 1);
-        graph.addDirectedEdge(0, 2, 1);
-        graph.addDirectedEdge(1, 2, 1);
-        graph.addDirectedEdge(2, 0, 1);
-        graph.addDirectedEdge(2, 3, 1);
-        graph.addDirectedEdge(3, 3, 1);
-        //graph.bfs(2);
-
-        Graph topoGraph = new Graph(6);
-        topoGraph.addDirectedEdge(5,0,1);
-        topoGraph.addDirectedEdge(4,0,1);
-        topoGraph.addDirectedEdge(2,3,1);
-        topoGraph.addDirectedEdge(3,1,1);
-        topoGraph.addDirectedEdge(5,2,1);
-        topoGraph.addDirectedEdge(4,1,1);
-        //topoGraph.getAllTopologicalSort();
-
-
-        Graph distanceGraph = new Graph(9);
-        distanceGraph.addUndirectedEdge(0, 1, 4);
-        distanceGraph.addUndirectedEdge(0, 7, 8);
-        distanceGraph.addUndirectedEdge(1, 7, 11);
-        distanceGraph.addUndirectedEdge(1, 2, 8);
-        distanceGraph.addUndirectedEdge(7, 6, 1);
-        distanceGraph.addUndirectedEdge(7, 8, 7);
-        distanceGraph.addUndirectedEdge(2, 8, 2);
-        distanceGraph.addUndirectedEdge(6, 8, 6);
-        distanceGraph.addUndirectedEdge(2, 3, 7);
-        distanceGraph.addUndirectedEdge(6, 5, 2);
-        distanceGraph.addUndirectedEdge(2, 5, 4);
-        distanceGraph.addUndirectedEdge(3, 5, 14);
-        distanceGraph.addUndirectedEdge(3, 4, 9);
-        distanceGraph.addUndirectedEdge(5, 4, 10);
-        distanceGraph.kruskal();
-
-        Graph distanceGraph2 = new Graph(5);
-        distanceGraph2.addDirectedEdge(0, 1, -1);
-        distanceGraph2.addDirectedEdge(0, 2, 4);
-        distanceGraph2.addDirectedEdge(1, 2, 3);
-        distanceGraph2.addDirectedEdge(3, 2, 5);
-        distanceGraph2.addDirectedEdge(4, 3, -3);
-        distanceGraph2.addDirectedEdge(3, 1, 1);
-        distanceGraph2.addDirectedEdge(1, 3, 2);
-        distanceGraph2.addDirectedEdge(1, 4, 2);
-        //distanceGraph2.bellmanFord(0);
-
-    }
 }

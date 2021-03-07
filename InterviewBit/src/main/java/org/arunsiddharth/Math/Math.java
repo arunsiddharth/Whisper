@@ -1,30 +1,22 @@
-package org.arunsiddharth.Arrays;
+package org.arunsiddharth.Math;
 import java.util.Arrays;
 import java.util.List;
-import java.nio.charset.CoderResult;
 import java.util.ArrayList;
-
-
-class Point {
-    double x;
-    double y;
-
-
-    public static Point subtract(Point a, Point b){
-        Point temp = new Point();
-        temp.x = a.x-b.x;
-        temp.y = a.y-b.y;
-        return temp;
-    }
-
-    public static double crossProduct(Point a, Point b){
-        return a.x*b.y-a.y*b.x;
-    }
-}
+import org.arunsiddharth.Domain.Point;
 
 
 public class Math {
     static boolean[] sieve;
+
+    public static long pow(long a, long b, long mod){
+        long result = 1;
+        while(b>0){
+            if(b%2==1)result = (result*a)%mod;
+            a = (a*a)%mod;
+            b/=2;
+        }
+        return result;
+    }
 
     public static double areaOfPolygon(Point[] points){
         double area = 0;

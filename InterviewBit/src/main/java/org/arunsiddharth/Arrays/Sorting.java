@@ -2,7 +2,6 @@ package org.arunsiddharth.Arrays;
 
 import java.util.Arrays;
 import java.util.List;
-import java.lang.Thread.State;
 import java.util.ArrayList;
 import java.util.Random;
 

@@ -1,14 +1,8 @@
-package org.arunsiddharth.Arrays;
+package org.arunsiddharth.LinkedList;
 
-class Node{
-    int val;
-    Node next;
-    Node(int val){
-        this.val=val;
-    }
-}
+import org.arunsiddharth.Domain.Node;
 
-class LinkedList {
+public class LinkedList {
     Node head;
 
     public void add(int val){
@@ -49,12 +43,4 @@ class LinkedList {
         return rest;
     }
 
-}
-
-
-public class PracticeLinkedList {
-
-    public static void main(String[] args){
-
-    }
 }

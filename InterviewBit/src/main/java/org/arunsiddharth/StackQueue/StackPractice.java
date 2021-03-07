@@ -1,4 +1,4 @@
-package org.arunsiddharth.Arrays;
+package org.arunsiddharth.StackQueue;
 import java.util.*;
 
 public class StackPractice {

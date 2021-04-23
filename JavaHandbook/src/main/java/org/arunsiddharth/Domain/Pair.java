@@ -17,4 +17,7 @@ public class Pair{
     public int hashCode(){
         return 31*this.first+this.second;
     }
+    public String toString(){
+        return "["+this.first+", "+this.second+"]";
+    }
 }

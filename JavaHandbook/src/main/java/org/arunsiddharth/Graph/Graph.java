@@ -1,8 +1,12 @@
 package org.arunsiddharth.Graph;
 
+import java.lang.reflect.Array;
+import java.security.GeneralSecurityException;
 import java.util.*;
 import org.arunsiddharth.Domain.Edge;
+import org.arunsiddharth.Domain.GenericTreeNode;
 import org.arunsiddharth.Advanced.DisjointSetUnion;
+import org.arunsiddharth.Domain.GenericTreeNode;
 
 public class Graph {
     ArrayList<ArrayList<Edge>> adjList;
@@ -18,6 +22,77 @@ public class Graph {
         for(int i=0;i<v;i++){
             adjList.add(new ArrayList<>());
         }
+    }
+
+    GenericTreeNode rootTree(int rootId){
+        if(isCyclicUnDirected())return null;
+        return buildTree(rootId, null);
+    }
+
+    GenericTreeNode buildTree(int rootId, GenericTreeNode parent){
+        GenericTreeNode root = GenericTreeNode.of(rootId, parent);
+        for(Edge child:adjList.get(root.id)){
+            if(root.parent!=null && child.dest==root.parent.id)continue;
+            root.children.add(buildTree(child.dest, root));
+        }
+        return root;
+    }
+
+    List<Integer> treeCenters(){
+        int[] degree = new int[V];
+        List<Integer> leaves = new ArrayList<>();
+        for(int i=0;i<V;i++){
+            degree[i] = adjList.get(i).size();
+            if(degree[i]<=1){
+                leaves.add(i);
+                degree[i] = 0;
+            }
+        }
+        int count = leaves.size();
+        while(count<V){
+            List<Integer> newLeaves = new ArrayList<>();
+            for(Integer leave:leaves){
+                for(Edge neighbor:adjList.get(leave)){
+                    degree[neighbor.dest]-=1;
+                    if(degree[neighbor.dest]==1){
+                        newLeaves.add(neighbor.dest);
+                    }
+                }
+                degree[leave]=0;
+            }
+            count+=newLeaves.size();
+            leaves=newLeaves;
+        }
+        return leaves;
+    }
+
+    String encode(GenericTreeNode root){
+        if(root==null)return "";
+        ArrayList<String> labels =  new ArrayList<String>();
+        for(GenericTreeNode child:root.children){
+            labels.add(encode(child));
+        }
+        Collections.sort(labels);
+        String result = "";
+        for(String label:labels){
+            result+="("+label+")";
+        }
+        return result;
+    }
+
+
+    boolean areTreeIsomorphic(Graph g2){
+        if(this.isCyclicUnDirected() || g2.isCyclicUnDirected())return false;
+        List<Integer> center1 = this.treeCenters();
+        List<Integer> center2 = g2.treeCenters();
+        GenericTreeNode tree1 = this.rootTree(center1.get(0));
+        String encoding1 = encode(tree1);
+        for(Integer center:center2){
+            GenericTreeNode tree2 = g2.rootTree(center);
+            String encoding2 = encode(tree2);
+            if(encoding1.equals(encoding2))return true;
+        }
+        return false;
     }
 
     void addUndirectedEdge(int u, int v, int wt){
@@ -284,6 +359,7 @@ public class Graph {
         while(!set.isEmpty()){
             Edge minWtNode = set.pollFirst();
             if(distance[minWtNode.source]<minWtNode.weight)continue;
+            distance[minWtNode.source]=minWtNode.weight;
             for(Edge child:adjList.get(minWtNode.source)){
                 if(distance[child.dest]>distance[minWtNode.source]+child.weight){
                     if(distance[child.dest]!=Integer.MAX_VALUE)
@@ -313,7 +389,7 @@ public class Graph {
         Arrays.fill(distance, Integer.MAX_VALUE);
         distance[src] = 0;
         for(int i=0;i<V-1;i++){
-            if(!updateDistance(distance))break;
+            updateDistance(distance);
         }
         if(updateDistance(distance))System.out.println("Graph contains negative cycle");
         else{

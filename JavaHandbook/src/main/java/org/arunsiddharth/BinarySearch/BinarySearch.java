@@ -86,7 +86,7 @@ public class BinarySearch {
      * @param key
      * @return
      */
-    public static <T extends Comparable<T>> int upper(T[] array, T key){
+    public static <T extends Comparable<T>> int higher(T[] array, T key){
         int low = 0;
         int high = array.length-1;
         int result=array.length;
@@ -184,7 +184,7 @@ public class BinarySearch {
             T left = array[(array.length+mid-1)%array.length];
             T right = array[(array.length+mid+1)%array.length];
             if(array[low].compareTo(array[high])<=0){
-                return 0;//Case 1 segment is sorted
+                return low;//Case 1 segment is sorted
             }
             else if(array[mid].compareTo(left)<=0 && array[mid].compareTo(right)<=0){
                 return mid;//case 2 pivot property
@@ -221,10 +221,43 @@ public class BinarySearch {
         return -1;
     }
 
+    public static double findMedianTwoSortedArrays(int[] a, int[] b){
+        if(a.length>b.length){
+            return findMedianTwoSortedArrays(b, a);
+        }
+        int x = a.length;
+        int y = b.length;
+        int low, high;
+        low = 0;
+        high = a.length;
+        while(low<=high){
+            int partitionX = low + (high-low)/2;
+            int partitionY = (x+y+1)/2-partitionX;
+            int leftX = partitionX==0?Integer.MIN_VALUE:a[partitionX-1];
+            int rightX = partitionX==x?Integer.MAX_VALUE:a[partitionX];
+            int leftY = partitionY==0?Integer.MAX_VALUE:b[partitionY-1];
+            int rightY = partitionY==y?Integer.MAX_VALUE:b[partitionY];
+            if(leftX<=rightY && leftY<=rightX){
+                if((x+y)%2==0){
+                    return ((double)Math.max(leftX, leftY)+Math.min(rightX, rightY))/2;
+                }else{
+                    return Math.max(leftX, leftY);
+                }
+            }else if(leftX>rightY){
+                high = partitionX-1;
+            }else{
+                low = partitionX+1;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
+
     public static void main(String[] args){
         Integer[] array = {22,33,36,44,49,90,91};
         //System.out.println(upperBound(array, 2));
         //Integer[] circularArray = {1,2,3,4,5};
-        System.out.println(floor(array, 21));
+        int[] a1 = {23, 26, 31, 35};
+        int[] a2 = {3, 5, 7, 9, 11, 16};
+        System.out.println(findMedianTwoSortedArrays(a1, a2));
     }
 }

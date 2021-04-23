@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.arunsiddharth.Domain.Point;
 
 
-public class Math {
+public class MathUtils {
     static boolean[] sieve;
 
     public static long pow(long a, long b, long mod){
@@ -24,7 +24,7 @@ public class Math {
         for(int i=0;i<n;i++){
             area+=Point.crossProduct(points[i], points[(i+1)%n]);
         }
-        return area;
+        return Math.abs(area/2.0);
     }    
 
     public static int directionOfPoint(Point a, Point b, Point p){
@@ -101,7 +101,38 @@ public class Math {
         return dividend;
     }
 
-    public static void main(String[] args){
+    public static int[][] mul(int[][] base){
+    	int[][] result = new int[2][2];
+    	result[0][0] = base[0][0]*base[0][0]+base[0][1]*base[1][0];
+    	result[0][1] = base[0][0]*base[0][1]+base[0][1]*base[1][1];
+    	result[1][0] = base[1][0]*base[0][0]+base[1][1]*base[1][0];
+    	result[1][1] = base[1][0]*base[0][1]+base[1][1]*base[1][1];
+    	return result;
+    }
 
+    public static int[][] mul2(int[][] base2, int[][] base){
+    	int[][] result = new int[2][1];
+    	result[0][0] = base[0][0]*base2[0][0]+base[0][1]*base2[1][0];
+    	result[1][0] = base[1][0]*base2[0][0]+base[1][1]*base2[1][0];
+    	return result;
+    }
+
+
+    public static int nThFibonacci(int A) {
+    	if(A==1)return 0;
+    	int[][] base = {{1,1},{1,0}};
+    	int[][] result = {{1},{0}};
+    	while(A>0){
+    	    if((A&1)!=0){
+    			result = mul2(result, base);
+            }
+            base = mul(base);
+            A>>=1;
+        }
+        return result[1][0];
+    }
+
+    public static void main(String[] args){
+        System.out.println(nThFibonacci(6));
     }
 }

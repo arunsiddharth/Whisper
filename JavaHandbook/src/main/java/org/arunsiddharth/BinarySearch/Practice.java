@@ -1,7 +1,5 @@
 package org.arunsiddharth.BinarySearch;
 
-import javax.sound.midi.MidiFileFormat;
-
 public class Practice {
     
     public int binarySearch(int[] array, int key){

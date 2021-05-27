@@ -19,6 +19,7 @@ public class WeirdAlgorithm {
         }
         Printer.println(1);
         Printer.close();
+        sc.close();
     }
 }
 

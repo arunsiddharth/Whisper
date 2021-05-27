@@ -87,7 +87,6 @@ public class Practice {
         System.out.println(stack);
         sortStack(stack);
         System.out.println(stack);
-        MinStack stack2 = new MinStack();
         int[] array = {1,2,3,4};
         Collections.reverse(Arrays.asList(array));
         System.out.println(Arrays.toString(array));

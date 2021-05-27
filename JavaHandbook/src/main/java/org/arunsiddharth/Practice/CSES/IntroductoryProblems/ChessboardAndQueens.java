@@ -35,5 +35,6 @@ class ChessboardAndQueens {
             board[i] = line.toCharArray();
         }
         System.out.println(solve(board, 0));
+        sc.close();
     }
 }

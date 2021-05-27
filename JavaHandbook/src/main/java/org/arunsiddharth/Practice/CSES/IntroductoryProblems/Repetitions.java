@@ -26,5 +26,6 @@ public class Repetitions {
             maxCounter = Math.max(maxCounter, counter);
         }
         System.out.println(maxCounter);
+        sc.close();
     }
 }

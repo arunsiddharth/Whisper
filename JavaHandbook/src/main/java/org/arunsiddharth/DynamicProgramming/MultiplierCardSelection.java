@@ -18,8 +18,8 @@ public class MultiplierCardSelection {
         return dp[start][end];
     }
     public static void main(String[] args){
-        int[] cards = {2,13,7,15};
-        int[] multiplier = {2,3};
+        //int[] cards = {2,13,7,15};
+        //int[] multiplier = {2,3};
         int[] cards2 = {-2,8,1,15,-6};
         int[] multiplier2 = {3,2,5};
         int n = cards2.length;

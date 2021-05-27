@@ -253,9 +253,6 @@ public class BinarySearch {
     }
 
     public static void main(String[] args){
-        Integer[] array = {22,33,36,44,49,90,91};
-        //System.out.println(upperBound(array, 2));
-        //Integer[] circularArray = {1,2,3,4,5};
         int[] a1 = {23, 26, 31, 35};
         int[] a2 = {3, 5, 7, 9, 11, 16};
         System.out.println(findMedianTwoSortedArrays(a1, a2));

@@ -17,5 +17,6 @@ public class MissingNumber {
                 break;
             }
         }
+        sc.close();
     }
 }

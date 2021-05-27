@@ -1,6 +1,5 @@
 package org.arunsiddharth.Practice.CSES.SortingAndSearching;
 
-import java.util.*;
 import java.io.*;
 
 public class MaximumSubarraySum {

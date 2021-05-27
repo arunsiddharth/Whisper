@@ -71,15 +71,6 @@ public class SolutionDP {
     }
     
     public static void main(String[] args){
-        int arr[] = { 1, 3, 6, 3, 2, 3, 6, 8, 9, 5 };
-        int n = arr.length;
-        //System.out.println("Minimum number of jumps to reach end is ", minJumps(arr, 0, n - 1));
-        //System.out.println(editDistance("ecfbefdcfca", "badfcbebbf", 0, 0));
-        //int sum=0;
-        //for(int i:arr)sum+=i;
-        //System.out.println(equalPartition(arr, arr.length, sum/2+sum%2));
-        //System.out.println(eggDrops(2, 100));
-
         int myarr[] = {8, 15, 3, 7};
         System.out.println(maximumAmount(myarr, 0, myarr.length-1, true));
     }

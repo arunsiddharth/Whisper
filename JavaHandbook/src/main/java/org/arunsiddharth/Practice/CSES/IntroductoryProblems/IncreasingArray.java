@@ -17,5 +17,6 @@ public class IncreasingArray {
             numOfOperations+=maxElement-arr[i];
         }
         System.out.println(numOfOperations);
+        sc.close();
     }
 }

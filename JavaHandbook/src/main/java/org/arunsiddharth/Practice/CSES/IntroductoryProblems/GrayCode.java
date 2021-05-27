@@ -11,7 +11,7 @@ public class GrayCode {
     static String getBinaryString(int num, int length){
         String binString = Integer.toBinaryString(num);
         int repetition = length-binString.length();
-        return "";//new String("0").repeat(repetition)+binString;
+        return new String("0").repeat(repetition)+binString;
     }
     static void solve(int n) throws Exception{
         for(int i=0;i<(1<<n);i++){

@@ -17,6 +17,7 @@ public class Permutations {
                 if(n%2==1 && (n+1)/2+i<=n)Printer.print((n+1)/2+i);
             }
         }
+        sc.close();
         Printer.close();
     }
 

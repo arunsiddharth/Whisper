@@ -1,6 +1,5 @@
 package org.arunsiddharth.DynamicProgramming;
 
-import java.lang.reflect.Member;
 import java.util.Arrays;
 
 public class MatrixMultiplication {
@@ -23,7 +22,6 @@ public class MatrixMultiplication {
         return memo[start][end];
     }
     public static void main(String[] args){
-        int[] matArr2 = {40, 20, 30, 10, 30};
         int[] matArr = {2, 40, 2, 40, 5};
         int n = matArr.length;
         memo = new int[n][n];
